@@ -1,0 +1,33 @@
+package com.evaluation1;
+
+public class JumbledNumber {
+	public static boolean isJumbled(int number) {
+		int previousDigit = -1;
+		int currentDigit;
+		int difference;
+
+		while (number > 0) {
+			currentDigit = number % 10;
+			difference = Math.abs(currentDigit - previousDigit);
+
+			if (difference > 1) {
+				return false;
+			}
+
+			previousDigit = currentDigit;
+			number /= 10;
+		}
+
+		return true;
+	}
+
+	public static void main(String[] args) {
+		int input = 8987;
+
+		if (isJumbled(input)) {
+			System.out.println("Valid");
+		} else {
+			System.out.println("Invalid");
+		}
+	}
+}
