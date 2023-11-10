@@ -1,0 +1,31 @@
+package com.evaluation1;
+
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+public class ExpressionRegex {
+    public static boolean isValidExpression(String expression) {
+       
+        String regex = "^(\\([^()]*\\))*$";
+
+       
+        Pattern pattern = Pattern.compile(regex);
+
+        Matcher matcher = pattern.matcher(expression);
+
+      
+        return matcher.matches();
+    }
+
+    public static void main(String[] args) {
+      
+        String expression1 = "(a+b)(a*b)";
+        System.out.println("Input: " + expression1);
+        System.out.println("Output: " + (isValidExpression(expression1) ? "Valid" : "Invalid"));
+        System.out.println();
+
+        String expression2 = "((a+b)";
+        System.out.println("Input: " + expression2);
+        System.out.println("Output: " + (isValidExpression(expression2) ? "Valid" : "Invalid"));
+    }
+}
